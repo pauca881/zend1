@@ -22,6 +22,13 @@ class Application_Model_Usuario extends Zend_Db_Table_Abstract
         return $this->fetchAll();
         //return $this->_dbTable->fetchAll();
 
+        //consulta personalizada
+//        $select = $this->select()
+//                   ->where('fecha_inicio >= ?', $inicio)
+ //                  ->where('fecha_fin <= ?', $fin);
+    
+ //   return $this->fetchAll($select);
+
     }
     
     public function getUsuario($id)
