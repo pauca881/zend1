@@ -24,6 +24,8 @@ if (!empty($this->usuarios)): ?>
                     <td><?php echo $usuario->id; ?></td>
                     <td><?php echo $usuario->nombre; ?></td>
                     <td><?php echo $usuario->email; ?></td>
+                    <td><a href="<?php echo $this->url(array('controller'=>'usuario', 'action'=>'edit', 'id'=>$usuario->id)); ?>">Editar</a></td>
+                    <td><a href="<?php echo $this->url(array('controller'=>'usuario', 'action'=>'delete', 'id'=>$usuario->id)); ?>">Borrar</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
