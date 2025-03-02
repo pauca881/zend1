@@ -1,0 +1,33 @@
+<h1>Lista de Usuarios</h1>
+
+<a href="/zf1/public">Volver a inicio</a><br><br>
+
+<?php 
+
+// echo "Contenido de usuarios: "; 
+// var_dump($this->usuarios); 
+
+
+
+if (!empty($this->usuarios)): ?>
+    <table style="border: 1px solid #000000;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($this->usuarios as $usuario): ?>
+                <tr>
+                    <td><?php echo $usuario->id; ?></td>
+                    <td><?php echo $usuario->nombre; ?></td>
+                    <td><?php echo $usuario->email; ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php else: ?>
+    <p>No hay usuarios registrados.</p>
+<?php endif; ?>
