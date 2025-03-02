@@ -79,23 +79,16 @@ class UsuarioController extends Zend_Controller_Action
     }
 
     
-    public function deleteAction()
+public function deleteAction()
     {
-        if ($this->getRequest()->isPost()) {
-            $del = $this->getRequest()->getPost('del');
-            if ($del == 'Si') {
-                $id = (int)$this->getRequest()->getPost('id');
-                $usuarios = new Application_Model_Usuario();
-                $usuarios->deleteUsuario($id);
-            }
-            $this->_helper->redirector('index');
-        } else {
-            $id = (int)$this->_getParam('id');
-            if ($id > 0) {
-                $usuarios = new Application_Model_Usuario();
-                $this->view->usuario = $usuarios->getUsuario($id);
-            }
+        $id = (int)$this->_getParam('id');
+        
+        if ($id > 0) {
+            $usuarios = new Application_Model_Usuario();
+            $usuarios->deleteUsuario($id);
         }
+        
+        $this->_helper->redirector('index');
     }
 
 
