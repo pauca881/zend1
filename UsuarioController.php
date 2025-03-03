@@ -33,6 +33,20 @@ class UsuarioController extends Zend_Controller_Action
                     'email' => $email
                 ));
 
+                // Guardar en CSV
+                $csvFile = 'C:\laragon\www\zf1\data\usuarios.csv';
+                $fileExists = file_exists($csvFile);
+
+                $handle = fopen($csvFile, 'a');
+
+                // Si el archivo no existe, añadir encabezados
+                if (!$fileExists) {
+                    fputcsv($handle, array('nombre', 'email'));
+                }
+
+                fputcsv($handle, array($nombre, $email));
+                fclose($handle);
+
             // Usar FlashMessenger para mostrar un mensaje de éxito
             $this->_helper->FlashMessenger->addMessage('Usuario añadido exitosamente.');
             
