@@ -1,0 +1,43 @@
+<div class="calendario-container">
+    <h1>Calendario de Eventos</h1>
+    
+    <?php if (count($this->calendarios) > 0): ?>
+        <table class="tabla-calendario">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Título</th>
+                    <th>Lugar</th>
+                    <th>Horario</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($this->calendarios as $calendario): ?>
+                <tr>
+                    <td><?php echo $calendario->getFecha(); ?></td>
+                    <td><?php echo $calendario->getTitulo(); ?></td>
+                    <td><?php echo $calendario->getLugar(); ?></td>
+                    <td>
+                        <?php echo $calendario->getHoraInicio(); ?> - 
+                        <?php echo $calendario->getHoraFin(); ?>
+                    </td>
+                    <td>
+                        <a href="<?php echo $this->url(array('controller' => 'calendario', 'action' => 'ver', 'id' => $calendario->getId())); ?>" class="btn-ver">Editar</a>
+						<a href="<?php echo $this->url(array('controller' => 'calendario', 'action' => 'ver', 'id' => $calendario->getId())); ?>" class="btn-ver">Borrar</a>
+
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php else: ?> 	
+        <p>No hay eventos programados.</p>
+    <?php endif; ?><br>
+    
+    <div class="acciones">
+        <a href="<?php echo $this->url(array('controller' => 'calendario', 'action' => 'nuevo')); ?>" class="btn-nuevo">Nuevo evento</a><br>
+
+		<a href="/zf1/public">Volver a inicio</a><br><br>
+		</div>
+</div>
